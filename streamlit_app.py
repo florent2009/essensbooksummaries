@@ -4,12 +4,7 @@ import requests
 import json
 
 
-st.title("🎈 My new app 2")
-st.write(
-    "Let's start building! For help and inspiration, head over to [docs.streamlit.io](https://docs.streamlit.io/)."
-    
-)
-
+st.title("Essens Book Summaries")
 
 # 1. as sidebar menu
 with st.sidebar:
