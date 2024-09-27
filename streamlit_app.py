@@ -68,3 +68,34 @@ if query:
 else:
     st.write("Start typing to search for books...")
 
+
+
+# Define the URLs for the two audio files and their corresponding image thumbnails
+audio_url1 = "https://example.com/your-first-audio-file.mp3"  # Replace with your actual first MP3 URL
+audio_url2 = "https://example.com/your-second-audio-file.mp3"  # Replace with your actual second MP3 URL
+image_url1 = "https://example.com/your-first-thumbnail.jpg"   # Replace with your actual first image thumbnail URL
+image_url2 = "https://example.com/your-second-thumbnail.jpg"  # Replace with your actual second image thumbnail URL
+
+# Initialize session state to handle which audio and image to display
+if 'audio_url' not in st.session_state:
+    st.session_state.audio_url = None
+    st.session_state.image_url = None
+
+# Container at the bottom of the page
+with st.container():
+    # Place buttons and image in columns
+    col1, col2, col3 = st.columns(3)
+    with col1:
+        if st.button('Play Audio 1'):
+            st.session_state.audio_url = audio_url1
+            st.session_state.image_url = image_url1
+    with col2:
+        if st.button('Play Audio 2'):
+            st.session_state.audio_url = audio_url2
+            st.session_state.image_url = image_url2
+
+    # Display image and audio player if URLs have been set
+    with col3:
+        if st.session_state.audio_url is not None and st.session_state.image_url is not None:
+            st.image(st.session_state.image_url, width=150, caption="Audio Thumbnail")
+            st.audio(st.session_state.audio_url, format='audio/mp3')
